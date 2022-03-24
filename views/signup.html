@@ -1,0 +1,46 @@
+% include('_header', title='Sign Up', loggedIn=is_logged_in, nav='signup')
+<main id="signup">
+    <h1>
+        Create a new user here!
+    </h1>
+    <form>
+        <label for="new_user_first_name">
+            First Name
+            % include('error_message', error=first_name_missing, error_text='Please, input your first name')
+            % include('error_message', error=first_name_length,
+            % error_text='Your first name must be between 2 and 50 characters long')
+            <input name="new_user_first_name" id="new_user_first_name" type="text" placeholder="First name"
+                value="{{ user_first_name or '' }}" tabindex="0" />
+        </label>
+        <label for="new_user_last_name">
+            Last Name
+            % include('error_message', error=last_name_missing, error_text='Please, input your last name')
+            <input name="new_user_last_name" id="new_user_last_name" type="text" placeholder="Last name"
+                value="{{ user_last_name or '' }}" tabindex="0">
+        </label>
+        <label for="new_user_email">
+            Email
+            % include('error_message', error=email_missing, error_text='Please, input an email')
+            % include('error_message', error=email_invalid, error_text='Please, input a valid email')
+            % include('error_message', error=user_exists_email, error_text='A user with this email already exists')
+            <input name="new_user_email" id="new_user_email" type="text" placeholder="Email"
+                value="{{ user_email or '' }}" tabindex="0">
+        </label>
+        <label for="new_user_username">
+            Username
+            % include('error_message', error=username_missing, error_text='Please, input a username')
+            % include('error_message', error=user_exists_username,
+            % error_text='A user with this username already exists')
+            <input name="new_user_username" id="new_user_username" type="text" placeholder="Username"
+                value="{{ user_username or '' }}" tabindex="0">
+        </label>
+        <label for="new_user_password">
+            Password
+            % include('error_message', error=password_short, error_text='Passwords must be 3 or more characters long')
+            % include('error_message', error=password_missing, error_text='Please, input a password')
+            <input name="new_user_password" id="new_user_password" type="password" placeholder="Password" tabindex="0">
+        </label>
+        <input onclick="handleNavigation(event, 'POST')" id="submit-sign-up" type="submit" value="SIGN ME UP!">
+    </form>
+</main>
+% include('_footer')

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/app.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="/assets/script.js" defer></script>
+    <title>{{get("title", "Twitter")}} | Twitter</title>
+</head>
+
+<body>
+    % if not is_logged_in:
+    <nav class="{{get('nav', '')}}">
+        <button onclick="handleNavigation(event)" id="feed">Feed</button>
+        <button onclick="handleNavigation(event)" id="log-in">Log In</button>
+        <button onclick="handleNavigation(event)" id="sign-up">Sign Up</button>
+    </nav>
+    % end
+    % if is_logged_in:
+    <nav class="{{get('nav', '')}}">
+        <button onclick="handleNavigation(event)" id="feed">Feed</button>
+        <button onclick="handleNavigation(event)" id="profile">Profile</button>
+        <button onclick="handleNavigation(event)" id="new-tweet">New Tweet</button>
+        <button onclick="handleNavigation(event, 'DELETE')" id="log-out">Log Out</button>
+    </nav>
+    % end

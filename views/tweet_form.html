@@ -1,0 +1,52 @@
+% include('_header', title=tweet_status, loggedIn=is_logged_in, nav=tweet_status)
+
+<main id="{{tweet_status}}-tweet-view">
+    <h1>
+        % if tweet_status == "new":
+        Post a new tweet!
+        % else:
+        Edit tweet!
+        % end
+    </h1>
+    % if tweet:
+    <form data-tweet-id="{{tweet['tweet_id']}}">
+        % else:
+        <form>
+            % end
+            <label for="tweet_text">
+                Text
+                % include('error_message', error=error, error_short='empty', error_text='A tweet must contain text')
+                <textarea name="tweet_text" id="tweet_text" placeholder="Text">
+                % if tweet:
+                tweet['tweet_text']
+                % end
+</textarea>
+            </label>
+
+
+            <input onclick="removeImage(event)" id="remove_image_button" type="button" value="Remove image">
+
+            % if tweet and tweet['tweet_image']:
+            <label for="my_image">Change image</label>
+            % end
+            <!-- % if not tweet or not tweet['tweet_image']: -->
+            <label for="tweet_image">
+                Add an image
+                % include('error_message', error=error, error_short='image-not-allowed',
+                % error_text='Sorry, filetype not supported. Only .png, .jpeg and .jpg files allowed.')
+            </label>
+            <input name="tweet_image" id="tweet_image" type="file">
+            <!-- % end -->
+
+
+            % if tweet_status == "new":
+            <input onclick="handleNavigation(event, 'POST')" id="submit-new-tweet" type="button" value="POST!">
+            % else:
+            <input onclick="handleNavigation(event, 'PUT')" id="submit-edit-tweet" type="button" value="SAVE EDITS!">
+            % end
+
+        </form>
+</main>
+
+
+% include('_footer')

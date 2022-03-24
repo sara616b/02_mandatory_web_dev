@@ -1,0 +1,22 @@
+% include('_header', title='Log In', loggedIn=is_logged_in, nav='login')
+<main id="login">
+    <h1>
+        Login
+    </h1>
+    <form>
+        % include('error_message', error=error, error_short="no_user", error_text='No user with these values exists')
+        <label for="user_email">
+            Email
+            % include('error_message', error=error, error_short="user_email", error_text='Please enter a valid email')
+            <input name="user_email" id="user_email" type="text" placeholder="Email" value="{{user_email or ''}}">
+        </label>
+        <label for="user_password">
+            Password
+            % include('error_message', error=error, error_short="user_password",
+            % error_text='Please enter the correct password')
+            <input name="user_password" id="user_password" type="password" placeholder="Password">
+        </label>
+        <input onclick="handleNavigation(event, 'POST')" id="log-in" type="submit" value="LOG IN!">
+    </form>
+</main>
+% include('_footer')

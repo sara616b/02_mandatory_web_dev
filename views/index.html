@@ -1,0 +1,17 @@
+% include('_header', title='Feed', loggedIn=is_logged_in, nav='feed')
+<main id="feed-view">
+    % if not tweets:
+    <div>
+        Sorry, no tweets to show yet!
+    </div>
+    <a href="/new-tweet">
+        Why not post a new one!
+    </a>
+    % end
+    <div id="tweets">
+        % for tweet in tweets:
+        % include('tweet_display')
+        % end
+    </div>
+</main>
+% include('_footer')

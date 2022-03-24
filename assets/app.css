@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hidden {
+  display: none !important;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+main {
+  padding: 30px 15px;
+  max-width: 1000px;
+  margin: auto;
+}
+h1 {
+  padding-bottom: 10px;
+  font-weight: 300;
+}
+h2 {
+  font-weight: 300;
+}
+p,
+label {
+  font-weight: 300;
+  line-height: 1.5;
+}
+button:not(nav *),
+input[type="submit"],
+input[type="button"] {
+  background-color: rgb(68, 62, 148);
+  color: white;
+  padding: 10px;
+  border: none;
+  transition: all 0.2s;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* NAVIGATION */
+nav {
+  padding: 0.5rem;
+  background-color: rgb(45, 41, 100);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.137);
+}
+nav a,
+nav button {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  width: auto;
+  text-decoration: none;
+  transition: 0.2s all;
+  font-weight: 300;
+  background-color: #0000;
+  border: none;
+}
+nav a:last-of-type,
+nav button:last-of-type {
+  background-color: rgb(68, 62, 148);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.137);
+  border-radius: 2px;
+}
+nav a:hover,
+nav button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+nav.login #log-in,
+nav.signup #sign-up,
+nav.feed #feed,
+nav.profile #profile,
+nav.new-tweet #new-tweet {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* WELCOME */
+#welcome {
+  text-align: center;
+  max-width: 500px;
+}
+#welcome h1 {
+  font-size: 300%;
+}
+#welcome div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+#welcome p {
+  text-align: left;
+  padding: 30px 0;
+}
+#welcome a {
+  max-width: 50%;
+  margin: 0 -5px;
+}
+
+/* SIGN UP and LOGIN */
+#signup,
+#login {
+  max-width: 500px;
+  margin: auto;
+}
+form {
+  border: 1px solid #bebebe;
+  border-radius: 2px;
+  padding: 15px;
+}
+form label {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 10px 0;
+}
+form label span,
+form span,
+.error-message {
+  /* errors */
+  background-color: rgb(155, 60, 60);
+  color: white;
+  width: fit-content;
+  margin-bottom: 2px;
+  padding: 0 2px;
+  font-size: 12px;
+  display: block;
+}
+form input,
+form textarea {
+  border: 1px solid #d5d5d5;
+  border-radius: 2px;
+  background-color: #f9f9f9;
+  padding: 5px;
+  max-width: 100%;
+  font-size: 14px;
+}
+
+/* SIGN UP SUCCESS */
+#signup-success {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* PROFILE */
+#profile-view header {
+  max-width: 500px;
+  margin: auto;
+  padding: 0 15px;
+}
+
+/* NEW TWEET + EDIT TWEET */
+#new-tweet-view,
+#edit-tweet-view {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* FEED */
+#feed-view {
+  max-width: 500px;
+  margin: auto;
+}
+#feed-view #tweets {
+  display: flex;
+  flex-direction: column;
+}
+#feed-view .tweet {
+  border: 1px solid #bebebe;
+  border-radius: 2px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+#feed-view .tweet .name {
+  font-size: 12px;
+  font-weight: 500;
+}
+#feed-view .tweet .username {
+  color: gray;
+  background-color: rgba(255, 255, 255, 0);
+  display: inline-block;
+}
+#feed-view .tweet .title {
+  font-size: 20px;
+  padding: 10px 0;
+}
+#feed-view .tweet .description {
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+#feed-view .tweet .time-posted,
+#feed-view .tweet .time-edited {
+  font-size: 12px;
+  color: gray;
+}
+#feed-view .tweet .button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-top: 10px;
+}
+#feed-view .tweet .button-container form {
+  border: none;
+  padding: 0;
+}
+#feed-view .tweet .button-container .delete {
+  background-color: rgb(148, 62, 88);
+}

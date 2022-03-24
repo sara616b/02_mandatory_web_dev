@@ -1,0 +1,41 @@
+% include('_header', title='Edit Tweet', loggedIn=is_logged_in, nav='edit-tweet')
+<main id="edit-tweet-view">
+    <h1>
+        Edit Tweet
+    </h1>
+    <form data-tweet-id="{{tweet['tweet_id']}}">
+        <input name="tweet_id" id="tweet_id" type="hidden" value="{{tweet['tweet_id']}}">
+        <label for="edit_tweet_text">
+            Text
+            % include('error_message', error=error, error_short='empty', error_text='A tweet must contain text')
+            <textarea name="edit_tweet_text" id="edit_tweet_text" placeholder="Text">{{tweet['tweet_text']}}</textarea>
+        </label>
+        <input onclick="removeImage(event)" id="remove_image_button" type="button" value="Remove image">
+
+        % if tweet['tweet_image'] and error != 'image-not-allowed':
+        <div id="remove_image">
+            <label for="tweet_image_name">
+                <input type="text" value="{{tweet['tweet_image']}}" name="tweet_image_name" id="tweet_image_name"
+                    readonly>
+            </label>
+            <label for="remove_image_id">
+                <input type="text" value="{{tweet['tweet_image']}}" name="remove_image_id" id="remove_image_id" hidden>
+            </label>
+        </div>
+        % end
+        % if tweet['tweet_image'] and error != 'image-not-allowed':
+        <div id="add-new-image" class="hidden">
+            % else:
+            <div id="add-new-image">
+                % end
+                <label for="tweet_image">
+                    Add an image
+                    % include('error_message', error=error, error_short='image-not-allowed',
+                    % error_text='Sorry, filetype not supported. Only .png, .jpeg and .jpg files allowed.')
+                </label>
+                <input name="tweet_image" id="tweet_image" type="file">
+            </div>
+            <input id="submit-edit-tweet" onclick="handleNavigation(event, 'PUT')" type="button" value="SAVE EDITS!">
+    </form>
+</main>
+% include('_footer')

@@ -1,0 +1,25 @@
+% include('_header', title='New Tweet', loggedIn=is_logged_in, nav='new-tweet')
+<main id="new-tweet-view">
+    <h1>
+        Post a new tweet!
+    </h1>
+    <form>
+        <label for="new_tweet_text">
+            Text
+            % include('error_message', error=error, error_short='empty', error_text='A tweet must contain text')
+            <textarea name="new_tweet_text" id="new_tweet_text" placeholder="Text">{{tweet_text}}</textarea>
+        </label>
+
+        <input onclick="removeImage(event)" id="remove_image_button" type="button" value="Remove image">
+        <div id="add-new-image">
+            <label for="tweet_image">
+                Add an image
+                % include('error_message', error=error, error_short='image-not-allowed',
+                % error_text='Sorry, filetype not supported. Only .png, .jpeg and .jpg files allowed.')
+            </label>
+            <input name="tweet_image" id="tweet_image" type="file">
+        </div>
+        <input onclick="handleNavigation(event, 'POST')" id="submit-new-tweet" type="button" value="POST!">
+    </form>
+</main>
+% include('_footer')

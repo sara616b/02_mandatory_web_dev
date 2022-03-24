@@ -1,0 +1,25 @@
+% include('_header', title='Profile', nav='profile')
+<main id="profile-view">
+    <header>
+        <h2>@{{user["user_username"]}}</h2>
+        <h1>{{user["user_first_name"]}} {{user["user_last_name"]}}</h1>
+        <p>Email: {{user["user_email"]}}</p>
+        <p>Created: {{user["user_created_at"]}}</p>
+    </header>
+    <main id="feed-view">
+        % if not tweets:
+        <div>
+            You haven't posted any tweets!
+        </div>
+        <a href="/tweets/new">
+            Why not post a new one!
+        </a>
+        % end
+        <div id="tweets">
+            % for tweet in tweets:
+            % include('tweet_display')
+            % end
+        </div>
+    </main>
+</main>
+% include('_footer')

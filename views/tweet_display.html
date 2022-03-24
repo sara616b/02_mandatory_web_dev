@@ -1,0 +1,24 @@
+<form class="tweet" data-tweet-id="{{tweet}}">
+    <input name="tweet_id" id="tweet_id" type="hidden" value='{{tweet}}'>
+    <p class="name">{{tweets[tweet]["tweet_user_first_name"]}} {{tweets[tweet]["tweet_user_last_name"]}}
+        <span class="username">@{{tweets[tweet]["tweet_user_username"]}}</span>
+    </p>
+    % if tweets[tweet]["tweet_text"]:
+    <p class="description">{{tweets[tweet]["tweet_text"]}}</p>
+    % end
+    % if tweets[tweet]["tweet_image"]:
+    <img id='{{tweets[tweet]["tweet_image"]}}' src="/assets/images/{{tweets[tweet]['tweet_image']}}"
+        alt='{{tweets[tweet]["tweet_text"]}}' />
+    % end
+    <p class="time-posted">{{tweets[tweet]["tweet_created_at_datetime"]}}</p>
+    % if tweets[tweet]["tweet_updated_at_datetime"]:
+    <p class="time-edited">Last edited: {{tweets[tweet]["tweet_updated_at_datetime"]}}</p>
+    % end
+    % if is_logged_in and tweets[tweet]["tweet_user_id"] == user_id:
+    <div class="button-container">
+        <input onclick="handleNavigation(event)" id="edit-tweet" type="button" class="edit" value="EDIT">
+        <input onclick="handleNavigation(event, 'DELETE')" id="delete-tweet" type="button" class="delete"
+            value="DELETE">
+    </div>
+    % end
+</form>
